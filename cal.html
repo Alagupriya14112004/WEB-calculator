@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #007bff, #f4f4f9);
+}
+.calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+.calculator input[type="text"] {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  text-align: right;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.1);
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.buttons button {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.buttons button:hover {
+  background-color: #0056b3;
+}
+.buttons .clear {
+  grid-column: span 2;
+  background-color: #dc3545;
+}
+.buttons .clear:hover {
+  background-color: #a71d2a;
+}
+.buttons .equals {
+  grid-column: span 2;
+  background-color: #28a745;
+}
+.buttons .equals:hover {
+  background-color: #1e7e34;
+}
+
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="result" disabled>
+    <div class="buttons">
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('/')">/</button>
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('*')">*</button>
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('-')">-</button>
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button onclick="appendValue('+')">+</button>
+      <button onclick="calculate()" class="equals">=</button>
+      <button onclick="clearResult()" class="clear">C</button>
+    </div>
+  </div>
+
+  <script>
+    const resultInput = document.getElementById('result');
+
+    function appendValue(value) {
+      resultInput.value += value;
+    }
+
+    function calculate() {
+      try {
+        resultInput.value = eval(resultInput.value);
+      } catch (error) {
+        alert('Invalid input');
+      }
+    }
+
+    function clearResult() {
+      resultInput.value = '';
+    }
+  </script>
+</body>
+</html>
